@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Snip It!</title>
+        <link href="./style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class= "header-component">
+            <div class="menuButton">
+                <span class ="line line01"></span>
+                <span class ="line line02"></span>
+                <span class ="line line03"></span>
+            </div>
+            <div class= "tair-logo">
+                    <img height="35px" width="35px" src="./tair-icon.png" style="margin-top: -5px;">
+            </div>
+            <div class= "toolTitle">
+                <h4>Snip It!</h4>
+            </div>
+        </div>
+        <div class="description">
+            <h1> A tool for snipping audio online</h1>
+        </div>
+        <div class= "waveContainer" id= "waveform"></div>
+        </div>
+        <div class= "waveTimeline" id= "waveform-timeline"></div>
+        <div class= "controls">
+            <input type= "button" id="btn-play" value="Play" disabled="disabled" />
+            <input type= "button" id="btn-pause" value="Pause" disabled="disabled" />
+            <input type= "button" id="btn-delete" value="Delete" />
+            <input type= "button" id="btn-snip" value="Snip Audio!" />
+        </div>
+        <div class= "waveContainer" id= "waveform1"></div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
+        <script src="./audioWave.js" type="text/javascript"></script>
+    </body>
+</html>

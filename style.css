@@ -1,0 +1,91 @@
+body {
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header-component {
+  color: rgba(0, 0, 0, 0.87); 
+  background: linear-gradient(rgb(0, 137, 229) 0%, rgb(0, 105, 192) 100%); 
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; 
+  box-sizing: border-box; 
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px; 
+  border-radius: 0px; 
+  position: relative; 
+  z-index: 1100; 
+  width: 100%; 
+  display: flex; 
+  padding-left: 24px; 
+  padding-right: 24px;
+  align-items: center;
+}
+
+.menuButton {
+  background: none;
+  margin: 0;
+  display: inline-block; 
+  color: rgb(255, 255, 255); 
+  fill: rgb(255, 255, 255); 
+  height: 24px; 
+  width: 24px; 
+  user-select: none; 
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+span.line {
+  position: absolute;
+  height: 2px;
+  width: 15px;
+  margin: 0px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+}
+
+.line.line01 {
+  align-self: flex-start;
+  top: 37%;
+}
+
+.line.line02 {
+  align-self: center;
+  top: 45%;
+}
+
+.line.line03 {
+  align-self: flex-end;
+  top: 53%;
+}
+
+div.tair-logo {
+  margin: 6px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.toolTitle {
+  color: white;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+}
+
+.waveContainer {
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+}
+
+.controls input {
+  margin: 14px;
+  align-items: 20%;
+}
