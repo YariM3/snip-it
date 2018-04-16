@@ -91,24 +91,24 @@ function timeConversion() {
 function audioInstance(snipStart, snipEnd) {
     let audioBlobInstance = audioBlob.slice(snipStart,snipEnd,"audio/mp3");
     console.log(audioBlobInstance);
-    let reader = new FileReader();
-    reader.readAsDataURL(audioBlobInstance);
-    let audioSnip = new Audio();
-    audioSnip.src = URL.createObjectURL(reader);
-    wavesurfer.load(audioSnip);
-    // debugger;
-    // let reader = new FileReader();
-    // reader.readAsDataURL(audioBlobInstance);
-    // console.log(reader);
-    // loadAudioSnip();
+    renderWaveform(audioBlobInstance);
 };
 
-// function loadAudioSnip(){
-//     let audioSnip = new Audio();
-//     audioSnip.src = URL.createObjectURL(audioBlobInstance);
-//     wavesurfer.load(audioSnip);
-//  }
-
+function renderWaveform(audioBlobInstance) {
+    let domEl = document.createElement('div');
+    document.querySelector('.body').appendChild(domEl);
+    
+    wavesurfer = WaveSurfer.create({
+      container: domEl,
+      waveColor: 'red',
+      progressColor: 'purple',
+      hideScrollbar: true
+    });
+    wavesurfer.loadBlob(audioBlobInstance);
+    console.log('hey');
+    
+    return wavesurfer;
+}
 
 // Region confirmation
 function regionConfirmation() {
