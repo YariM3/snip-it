@@ -22,7 +22,7 @@ var audioContext;
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-// Create audio blob
+// Create audio blob with original content
 fetch(audioFile)
     .then(response => {
         if(response.ok) {
@@ -63,33 +63,36 @@ buttons.delete.addEventListener( "click", function() {
 
 
 //Time to byte and number to byte conversion function
-function timeConversion() {
-    let regionTime = region[0].title;               //Start and end time as string
-    console.log(regionTime);
+// function timeConversion() {
+//     let regionTime = region[0].title;               //Start and end time as string
+//     console.log(regionTime);
 
-    regionTime = regionTime.split('-');             //Creates start and end time array
+//     regionTime = regionTime.split('-');             //Creates start and end time array
     
-    let startTime = regionTime[0].split(':');       //Splits start time into its own array
-    let endTime = regionTime[1].split(':');       //Splits end time array into its own array
+//     let startTime = regionTime[0].split(':');       //Splits start time into its own array
+//     let endTime = regionTime[1].split(':');       //Splits end time array into its own array
     
-    if ( startTime.length === 2 || endTime.length === 2) {          //hour, min, and secs conversion to fraction of hour
-        startTime = (parseFloat(startTime[0]) / 60) + (parseFloat(startTime[1]) / 3600);
-        endTime = (parseFloat(endTime[0]) / 60) + (parseFloat(endTime[1]) / 3600);
-    } else if (endTime.length = 3 || endTime.length === 3) {
-        startTime = parseFloat(startTime[0]) + (parseFloat(startTime[1]) / 60) + (parseFloat(startTime[2]) / 3600);
-        endTime = parseFloat(endTime[0]) + (parseFloat(endTime[1]) / 60) + (parseFloat(endTime[2]) / 3600);    
-    }
-    console.log(startTime, endTime);
+//     if ( startTime.length === 2 || endTime.length === 2) {          //hour, min, and secs conversion to fraction of hour
+//         startTime = (parseFloat(startTime[0]) / 60) + (parseFloat(startTime[1]) / 3600);
+//         endTime = (parseFloat(endTime[0]) / 60) + (parseFloat(endTime[1]) / 3600);
+//     } else if (endTime.length = 3 || endTime.length === 3) {
+//         startTime = parseFloat(startTime[0]) + (parseFloat(startTime[1]) / 60) + (parseFloat(startTime[2]) / 3600);
+//         endTime = parseFloat(endTime[0]) + (parseFloat(endTime[1]) / 60) + (parseFloat(endTime[2]) / 3600);    
+//     }
+//     console.log(startTime, endTime);
 
-    snipStart = startTime * sampleRate;
-    snipEnd = endTime * sampleRate;
-    console.log(snipStart, snipEnd);
+//     snipStart = startTime * sampleRate;
+//     snipEnd = endTime * sampleRate;
+//     console.log(snipStart, snipEnd);
 
-    audioInstance(snipStart, snipEnd);
-};
+//     audioInstance(snipStart, snipEnd);
+// };
+
 // Creates audio blob for selected audio
-function audioInstance(snipStart, snipEnd) {
-    let audioBlobInstance = audioBlob.slice(snipStart,snipEnd,"audio/mp3");
+function audioInstance() {
+    let snipStart = 10;
+    let snipEnd = 20;
+    let audioBlobInstance = audioBlob.slice( snipStart, snipEnd, "audio/mp3" );
     console.log(audioBlobInstance);
     renderWaveform(audioBlobInstance);
 };
@@ -98,23 +101,23 @@ function renderWaveform(audioBlobInstance) {
     let domEl = document.createElement('div');
     document.querySelector('.body').appendChild(domEl);
     
-    wavesurfer = WaveSurfer.create({
+    let waveAudioInstance = WaveSurfer.create({
       container: domEl,
       waveColor: 'red',
       progressColor: 'purple',
       hideScrollbar: true
     });
-    wavesurfer.loadBlob(audioBlobInstance);
+    waveAudioInstance.loadBlob(audioBlobInstance);
     console.log('hey');
-    
-    return wavesurfer;
+
+    return waveAudioInstance;
 }
 
 // Region confirmation
 function regionConfirmation() {
     confirmWindow = window.confirm( "Ready to snip, OK?" );
         if (confirmWindow === true) {
-            timeConversion();
+            audioInstance();
         }
 };
 
